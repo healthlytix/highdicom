@@ -1267,7 +1267,7 @@ class ContainerContentItem(ContentItem):
     def __init__(
         self,
         name: Union[Code, CodedConcept],
-        is_content_continuous: bool = True,
+        is_content_continuous: bool = False,
         template_id: Optional[str] = None,
         relationship_type: Union[str, RelationshipTypeValues, None] = None
     ) -> None:
