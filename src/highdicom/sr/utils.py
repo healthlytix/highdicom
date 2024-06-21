@@ -90,10 +90,14 @@ def find_content_items(
         matched_content_items = []
         for i, content_item in enumerate(node.ContentSequence):
             name_code = content_item.ConceptNameCodeSequence[0]
+            try:
+                coding_value = name_code.CodeValue
+            except AttributeError:
+                coding_value = name_code.LongCodeValue
             item = ContentItem(
                 value_type=content_item.ValueType,
                 name=CodedConcept(
-                    value=name_code.CodeValue,
+                    value=coding_value,
                     scheme_designator=name_code.CodingSchemeDesignator,
                     meaning=name_code.CodeMeaning
                 ),
